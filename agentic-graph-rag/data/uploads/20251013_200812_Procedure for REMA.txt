@@ -1,0 +1,56 @@
+REMA - a real estate database management system 
+
+This is a database management project where SQL is used for database creation, tables creation, data read and writing, data storage and for other processes.
+
+This project solves all the real estate based queries by simplifying its users into three main types :\
+
+1) Seller
+2)Buyer
+3)Agenting
+
+There will be a common login for the login for all the types and after login there the user selects the option to sell or buy or agent the land for leasing and renting.
+Here we want to show all the types of properties for leasing or renting or for buying and for now these are the basic options for the project aspects.
+
+###   Seller
+
+After selecting seller, 
+need to give the property is open for sale, rent, lease or for development, then
+need to give all the details for the property that need to be sold and these are the thigs that the information needed to be filled 
+here seller can sell a single property at a time 
+* Property type (plot, flat, villa, farm land, farm house, barren land, etc)
+*Property size in square meter (as recommended) or may give the size in any popular units of area measurements
+*Property owner ship (current ownership)
+*Property features (near roads, distance from the key locations or key areas)
+*Property description
+*Property estimated price (per square meters or square yards)
+*Property value (total final worth) {Here the seller can also give the future estimating price of the land that might go up or down}
+*Property seller type
+*Negotiation available? (✔️ or ❌)
+*Brokering? (✔️ or ❌) {This shows that the sell request is by the direct owner or the third party seller}
+*Contact Information
+*Property location
+*Property city or town
+*Property usage type
+*
+
+
+## Buyer
+
+
+After selecting buyer need to complete the filters to get all the seller requests, the filters will be based on main priorities for need to fill property for purchase, rent, lease (Property city, property type, Property price, Property seller type, property value)
+after applying all the filters for prioritizing the property needs,
+gets all the possible available properties for his filters and from those he will select all the required property and gets all the complete details about the properties available
+here the buyer can buy a single property at a time, but can request for the queries can be multiple, can also buy from the bulk seller properties if there is an option to buy a piece from his bulk sale
+
+
+### Agent
+
+
+After selecting agent need to select the one from the multiple options buy, sell ,contract, development, etc
+in buy option he will get all the properties which are ready for doing business with like immediate buying and reselling, leasing, ware housing, etc.,
+here in agent buy you can buy multiple properties of different types at a time from multiple different sellers or from any other bulk seller 
+Sell option allows to sell the multiple properties under a single seller this will be a bulk selling site for the seller
+can sell multiple types of properties at a time.
+here he can sell the bulk property to multiple sellers or to a single bulk buyer
+development option gives here to find the properties needed to be developed or renewed 
+contract option shows all the necessary items that are needed for the seller before selling property to decorate or the buyer property to re design 

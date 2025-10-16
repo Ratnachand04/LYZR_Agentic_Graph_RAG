@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agentic Graph RAG - Unified UI</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .top-nav { margin-bottom: 20px; }
+    .top-nav button { margin-right: 8px; padding: 8px 12px; }
+    .tab { display: none; }
+    .tab.active { display: block; }
+    #log { white-space: pre-wrap; background:#f6f6f6; padding:10px; border:1px solid #ddd; height:200px; overflow:auto; }
+  </style>
+</head>
+<body>
+  <nav class="top-nav">
+    <button data-tab="upload">Upload</button>
+    <button data-tab="query">Query</button>
+    <button data-tab="graph">Graph</button>
+    <button data-tab="config">Settings</button>
+  </nav>
+
+  <div id="upload" class="tab active">
+    <h2>Upload Documents</h2>
+    <input id="fileinput" type="file" multiple />
+    <button id="uploadBtn">Upload & Process</button>
+    <div id="uploadResult"></div>
+  </div>
+
+  <div id="query" class="tab">
+    <h2>Query</h2>
+    <textarea id="queryText" rows="3" cols="80"></textarea><br/>
+    <button id="queryBtn">Run Query (HTTP)</button>
+    <button id="streamBtn">Run Query (Stream)</button>
+    <div id="queryResult"></div>
+    <div id="streamLog"></div>
+  </div>
+
+  <div id="graph" class="tab">
+    <h2>Graph Visualization</h2>
+    <div><em>Use Neo4j Browser at http://localhost:7474 to view graph (login: neo4j/password)</em></div>
+  </div>
+
+  <div id="config" class="tab">
+    <h2>Settings</h2>
+    <label>OPENROUTER_API_KEY: <input id="apiKey" style="width:400px;" /></label><br/>
+    <label>LLM_MODEL: <input id="llmModel" style="width:300px;" value="anthropic/claude-3-sonnet:beta"/></label><br/>
+    <button id="saveSettings">Save Settings</button>
+    <div id="settingsResult"></div>
+  </div>
+
+  <h3>Log</h3>
+  <div id="log"></div>
+
+  <script>
+    const tabs = document.querySelectorAll('.top-nav button')
+    const tabElems = document.querySelectorAll('.tab')
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.getAttribute('data-tab')
+        tabElems.forEach(t => t.classList.remove('active'))
+        document.getElementById(name).classList.add('active')
+      })
+    })
+
+    function log(msg){
+      const el = document.getElementById('log')
+      el.textContent = `[${new Date().toLocaleTimeString()}] ${msg}\n` + el.textContent
+    }
+
+    document.getElementById('uploadBtn').addEventListener('click', async ()=>{
+      const files = document.getElementById('fileinput').files
+      if(!files.length){ alert('Choose files first'); return }
+      const fd = new FormData()
+      for(const f of files) fd.append('files', f)
+
+      log('Uploading files...')
+      const res = await fetch('/upload', { method:'POST', body: fd })
+      const data = await res.json()
+      document.getElementById('uploadResult').textContent = JSON.stringify(data, null, 2)
+      log('Upload queued: ' + data.job_id)
+    })
+
+    document.getElementById('queryBtn').addEventListener('click', async ()=>{
+      const q = document.getElementById('queryText').value
+      if(!q) return alert('Enter a query')
+      log('Running query (HTTP)...')
+      const res = await fetch('/query', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({query: q}) })
+      const data = await res.json()
+      document.getElementById('queryResult').textContent = JSON.stringify(data, null, 2)
+      log('Query completed')
+    })
+
+    document.getElementById('streamBtn').addEventListener('click', ()=>{
+      const q = document.getElementById('queryText').value
+      if(!q) return alert('Enter a query')
+      log('Opening WebSocket for streaming...')
+      const ws = new WebSocket(`ws://${location.host}/ws/query`)
+      const streamLog = document.getElementById('streamLog')
+      streamLog.textContent = ''
+      ws.onopen = ()=>{ ws.send(JSON.stringify({query: q})) }
+      ws.onmessage = (ev)=>{
+        const data = JSON.parse(ev.data)
+        if(data.chunk) streamLog.textContent += data.chunk
+        if(data.final) streamLog.textContent += '\n\n[FINAL] ' + (data.answer || '')
+      }
+      ws.onclose = ()=> log('WebSocket closed')
+      ws.onerror = (e)=> log('WS error: ' + e)
+    })
+
+    document.getElementById('saveSettings').addEventListener('click', async ()=>{
+      const payload = { OPENROUTER_API_KEY: document.getElementById('apiKey').value, LLM_MODEL: document.getElementById('llmModel').value }
+      const res = await fetch('/settings', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) })
+      const data = await res.json()
+      document.getElementById('settingsResult').textContent = JSON.stringify(data, null,2)
+      log('Settings saved - reinitializing components')
+    })
+  </script>
+</body>
+</html>

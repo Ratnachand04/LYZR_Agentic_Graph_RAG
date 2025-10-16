@@ -1,0 +1,2392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Knowledge Graph - Session 20251016_171549</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .graph-container {
+            width: 100%;
+            height: 700px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+        .btn {
+            padding: 8px 16px;
+            margin: 2px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+        .node {
+            cursor: pointer;
+            stroke: #fff;
+            stroke-width: 2px;
+        }
+        .link {
+            stroke: #999;
+            stroke-opacity: 0.6;
+            stroke-width: 1.5px;
+        }
+        .node-label {
+            font-size: 11px;
+            font-weight: bold;
+            text-anchor: middle;
+            pointer-events: none;
+            fill: #333;
+        }
+        .edge-label {
+            font-size: 9px;
+            text-anchor: middle;
+            fill: #666;
+            pointer-events: none;
+        }
+        .info-panel {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .stat-box {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .legend {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+        .debug-info {
+            margin-top: 10px;
+            padding: 10px;
+            background: #fff3cd;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Agentic Knowledge Graph - Session 20251016_171549</h1>
+        <p>Interactive Knowledge Graph Visualization</p>
+    </div>
+    
+    <div class="graph-container">
+        <div class="controls">
+            <button class="btn btn-primary" onclick="resetGraph()">Reset View</button>
+            <button class="btn btn-secondary" onclick="pauseSimulation()">Pause</button>
+        </div>
+        <svg id="graph-svg" width="100%" height="100%"></svg>
+    </div>
+    
+    <div class="info-panel">
+        <h3>Graph Statistics</h3>
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">64</div>
+                <div>Entities</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">268</div>
+                <div>Relationships</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3</div>
+                <div>Entity Types</div>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <strong>Entity Types:</strong>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ff7f0e;"></div>
+                <span>Person</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #2ca02c;"></div>
+                <span>Organization</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #d62728;"></div>
+                <span>Concept</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #9467bd;"></div>
+                <span>Location</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #69b3a2;"></div>
+                <span>Other</span>
+            </div>
+        </div>
+        
+        <div class="debug-info">
+            <strong>Debug Info:</strong><br>
+            Nodes: 64 | Valid Relationships: 268<br>
+            Entity Types: concept, person, location<br>
+            Timestamp: {"generated": "now"}
+        </div>
+    </div>
+
+    <script>
+        // Data validation
+        const rawNodes = [
+  {
+    "id": "person_0",
+    "label": "Entity 0",
+    "type": "person",
+    "originalIndex": 0
+  },
+  {
+    "id": "person_1",
+    "label": "Entity 1",
+    "type": "person",
+    "originalIndex": 1
+  },
+  {
+    "id": "person_2",
+    "label": "Entity 2",
+    "type": "person",
+    "originalIndex": 2
+  },
+  {
+    "id": "person_3",
+    "label": "Entity 3",
+    "type": "person",
+    "originalIndex": 3
+  },
+  {
+    "id": "person_4",
+    "label": "Entity 4",
+    "type": "person",
+    "originalIndex": 4
+  },
+  {
+    "id": "person_5",
+    "label": "Entity 5",
+    "type": "person",
+    "originalIndex": 5
+  },
+  {
+    "id": "person_6",
+    "label": "Entity 6",
+    "type": "person",
+    "originalIndex": 6
+  },
+  {
+    "id": "person_7",
+    "label": "Entity 7",
+    "type": "person",
+    "originalIndex": 7
+  },
+  {
+    "id": "person_8",
+    "label": "Entity 8",
+    "type": "person",
+    "originalIndex": 8
+  },
+  {
+    "id": "person_9",
+    "label": "Entity 9",
+    "type": "person",
+    "originalIndex": 9
+  },
+  {
+    "id": "concept_10",
+    "label": "Entity 10",
+    "type": "concept",
+    "originalIndex": 10
+  },
+  {
+    "id": "location_11",
+    "label": "Entity 11",
+    "type": "location",
+    "originalIndex": 11
+  },
+  {
+    "id": "location_12",
+    "label": "Entity 12",
+    "type": "location",
+    "originalIndex": 12
+  },
+  {
+    "id": "location_13",
+    "label": "Entity 13",
+    "type": "location",
+    "originalIndex": 13
+  },
+  {
+    "id": "location_14",
+    "label": "Entity 14",
+    "type": "location",
+    "originalIndex": 14
+  },
+  {
+    "id": "location_15",
+    "label": "Entity 15",
+    "type": "location",
+    "originalIndex": 15
+  },
+  {
+    "id": "location_16",
+    "label": "Entity 16",
+    "type": "location",
+    "originalIndex": 16
+  },
+  {
+    "id": "location_17",
+    "label": "Entity 17",
+    "type": "location",
+    "originalIndex": 17
+  },
+  {
+    "id": "location_18",
+    "label": "Entity 18",
+    "type": "location",
+    "originalIndex": 18
+  },
+  {
+    "id": "location_19",
+    "label": "Entity 19",
+    "type": "location",
+    "originalIndex": 19
+  },
+  {
+    "id": "location_20",
+    "label": "Entity 20",
+    "type": "location",
+    "originalIndex": 20
+  },
+  {
+    "id": "person_21",
+    "label": "Entity 21",
+    "type": "person",
+    "originalIndex": 21
+  },
+  {
+    "id": "person_22",
+    "label": "Entity 22",
+    "type": "person",
+    "originalIndex": 22
+  },
+  {
+    "id": "person_23",
+    "label": "Entity 23",
+    "type": "person",
+    "originalIndex": 23
+  },
+  {
+    "id": "person_24",
+    "label": "Entity 24",
+    "type": "person",
+    "originalIndex": 24
+  },
+  {
+    "id": "person_25",
+    "label": "Entity 25",
+    "type": "person",
+    "originalIndex": 25
+  },
+  {
+    "id": "person_26",
+    "label": "Entity 26",
+    "type": "person",
+    "originalIndex": 26
+  },
+  {
+    "id": "person_27",
+    "label": "Entity 27",
+    "type": "person",
+    "originalIndex": 27
+  },
+  {
+    "id": "person_28",
+    "label": "Entity 28",
+    "type": "person",
+    "originalIndex": 28
+  },
+  {
+    "id": "person_29",
+    "label": "Entity 29",
+    "type": "person",
+    "originalIndex": 29
+  },
+  {
+    "id": "person_30",
+    "label": "Entity 30",
+    "type": "person",
+    "originalIndex": 30
+  },
+  {
+    "id": "person_31",
+    "label": "Entity 31",
+    "type": "person",
+    "originalIndex": 31
+  },
+  {
+    "id": "person_32",
+    "label": "Entity 32",
+    "type": "person",
+    "originalIndex": 32
+  },
+  {
+    "id": "person_33",
+    "label": "Entity 33",
+    "type": "person",
+    "originalIndex": 33
+  },
+  {
+    "id": "person_34",
+    "label": "Entity 34",
+    "type": "person",
+    "originalIndex": 34
+  },
+  {
+    "id": "person_35",
+    "label": "Entity 35",
+    "type": "person",
+    "originalIndex": 35
+  },
+  {
+    "id": "person_36",
+    "label": "Entity 36",
+    "type": "person",
+    "originalIndex": 36
+  },
+  {
+    "id": "person_37",
+    "label": "Entity 37",
+    "type": "person",
+    "originalIndex": 37
+  },
+  {
+    "id": "person_38",
+    "label": "Entity 38",
+    "type": "person",
+    "originalIndex": 38
+  },
+  {
+    "id": "person_39",
+    "label": "Entity 39",
+    "type": "person",
+    "originalIndex": 39
+  },
+  {
+    "id": "person_40",
+    "label": "Entity 40",
+    "type": "person",
+    "originalIndex": 40
+  },
+  {
+    "id": "concept_41",
+    "label": "Entity 41",
+    "type": "concept",
+    "originalIndex": 41
+  },
+  {
+    "id": "concept_42",
+    "label": "Entity 42",
+    "type": "concept",
+    "originalIndex": 42
+  },
+  {
+    "id": "location_43",
+    "label": "Entity 43",
+    "type": "location",
+    "originalIndex": 43
+  },
+  {
+    "id": "location_44",
+    "label": "Entity 44",
+    "type": "location",
+    "originalIndex": 44
+  },
+  {
+    "id": "location_45",
+    "label": "Entity 45",
+    "type": "location",
+    "originalIndex": 45
+  },
+  {
+    "id": "location_46",
+    "label": "Entity 46",
+    "type": "location",
+    "originalIndex": 46
+  },
+  {
+    "id": "location_47",
+    "label": "Entity 47",
+    "type": "location",
+    "originalIndex": 47
+  },
+  {
+    "id": "location_48",
+    "label": "Entity 48",
+    "type": "location",
+    "originalIndex": 48
+  },
+  {
+    "id": "location_49",
+    "label": "Entity 49",
+    "type": "location",
+    "originalIndex": 49
+  },
+  {
+    "id": "location_50",
+    "label": "Entity 50",
+    "type": "location",
+    "originalIndex": 50
+  },
+  {
+    "id": "person_51",
+    "label": "Entity 51",
+    "type": "person",
+    "originalIndex": 51
+  },
+  {
+    "id": "person_52",
+    "label": "Entity 52",
+    "type": "person",
+    "originalIndex": 52
+  },
+  {
+    "id": "person_53",
+    "label": "Entity 53",
+    "type": "person",
+    "originalIndex": 53
+  },
+  {
+    "id": "person_54",
+    "label": "Entity 54",
+    "type": "person",
+    "originalIndex": 54
+  },
+  {
+    "id": "person_55",
+    "label": "Entity 55",
+    "type": "person",
+    "originalIndex": 55
+  },
+  {
+    "id": "person_56",
+    "label": "Entity 56",
+    "type": "person",
+    "originalIndex": 56
+  },
+  {
+    "id": "person_57",
+    "label": "Entity 57",
+    "type": "person",
+    "originalIndex": 57
+  },
+  {
+    "id": "person_58",
+    "label": "Entity 58",
+    "type": "person",
+    "originalIndex": 58
+  },
+  {
+    "id": "person_59",
+    "label": "Entity 59",
+    "type": "person",
+    "originalIndex": 59
+  },
+  {
+    "id": "person_60",
+    "label": "Entity 60",
+    "type": "person",
+    "originalIndex": 60
+  },
+  {
+    "id": "concept_61",
+    "label": "Entity 61",
+    "type": "concept",
+    "originalIndex": 61
+  },
+  {
+    "id": "concept_62",
+    "label": "Entity 62",
+    "type": "concept",
+    "originalIndex": 62
+  },
+  {
+    "id": "location_63",
+    "label": "Entity 63",
+    "type": "location",
+    "originalIndex": 63
+  }
+];
+        const rawEdges = [
+  {
+    "source": "person_0",
+    "target": "concept_10",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_0",
+    "target": "location_11",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_0",
+    "target": "location_12",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_0",
+    "target": "location_13",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_0",
+    "target": "location_14",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_0",
+    "target": "location_15",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_0",
+    "target": "location_16",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_0",
+    "target": "location_17",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_0",
+    "target": "location_18",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_0",
+    "target": "location_19",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_0",
+    "target": "location_20",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_1",
+    "target": "concept_10",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_1",
+    "target": "location_11",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_1",
+    "target": "location_12",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_1",
+    "target": "location_13",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_1",
+    "target": "location_14",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_1",
+    "target": "location_15",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_1",
+    "target": "location_16",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_1",
+    "target": "location_17",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_1",
+    "target": "location_18",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_1",
+    "target": "location_19",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_1",
+    "target": "location_20",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_2",
+    "target": "concept_10",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_2",
+    "target": "location_11",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_2",
+    "target": "location_12",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_2",
+    "target": "location_13",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_2",
+    "target": "location_14",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_2",
+    "target": "location_15",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_2",
+    "target": "location_16",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_2",
+    "target": "location_17",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_2",
+    "target": "location_18",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_2",
+    "target": "location_19",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_2",
+    "target": "location_20",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_3",
+    "target": "concept_10",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_3",
+    "target": "location_11",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_3",
+    "target": "location_12",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_3",
+    "target": "location_13",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_3",
+    "target": "location_14",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_3",
+    "target": "location_15",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_3",
+    "target": "location_16",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_3",
+    "target": "location_17",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_3",
+    "target": "location_18",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_3",
+    "target": "location_19",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_3",
+    "target": "location_20",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_4",
+    "target": "concept_10",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_4",
+    "target": "location_11",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_4",
+    "target": "location_12",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_4",
+    "target": "location_13",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_4",
+    "target": "location_14",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_4",
+    "target": "location_15",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_4",
+    "target": "location_16",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_4",
+    "target": "location_17",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_4",
+    "target": "location_18",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_4",
+    "target": "location_19",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_4",
+    "target": "location_20",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_5",
+    "target": "concept_10",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_5",
+    "target": "location_11",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_5",
+    "target": "location_12",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_5",
+    "target": "location_13",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_5",
+    "target": "location_14",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_5",
+    "target": "location_15",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_5",
+    "target": "location_16",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_5",
+    "target": "location_17",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_5",
+    "target": "location_18",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_5",
+    "target": "location_19",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_5",
+    "target": "location_20",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_6",
+    "target": "concept_10",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_6",
+    "target": "location_11",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_6",
+    "target": "location_12",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_6",
+    "target": "location_13",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_6",
+    "target": "location_14",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_6",
+    "target": "location_15",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_6",
+    "target": "location_16",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_6",
+    "target": "location_17",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_6",
+    "target": "location_18",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_6",
+    "target": "location_19",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_6",
+    "target": "location_20",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_7",
+    "target": "concept_10",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_7",
+    "target": "location_11",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_7",
+    "target": "location_12",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_7",
+    "target": "location_13",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_7",
+    "target": "location_14",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_7",
+    "target": "location_15",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_7",
+    "target": "location_16",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_7",
+    "target": "location_17",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_7",
+    "target": "location_18",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_7",
+    "target": "location_19",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_7",
+    "target": "location_20",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_8",
+    "target": "concept_10",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_8",
+    "target": "location_11",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_8",
+    "target": "location_12",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_8",
+    "target": "location_13",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_8",
+    "target": "location_14",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_8",
+    "target": "location_15",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_8",
+    "target": "location_16",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_8",
+    "target": "location_17",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_8",
+    "target": "location_18",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_8",
+    "target": "location_19",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_8",
+    "target": "location_20",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_9",
+    "target": "concept_10",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_9",
+    "target": "location_11",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_9",
+    "target": "location_12",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_9",
+    "target": "location_13",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_9",
+    "target": "location_14",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_9",
+    "target": "location_15",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_9",
+    "target": "location_16",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_9",
+    "target": "location_17",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_9",
+    "target": "location_18",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_9",
+    "target": "location_19",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_9",
+    "target": "location_20",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_10",
+    "target": "location_11",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_10",
+    "target": "location_12",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_10",
+    "target": "location_13",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_10",
+    "target": "location_14",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_10",
+    "target": "location_15",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_10",
+    "target": "location_16",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_10",
+    "target": "location_17",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_10",
+    "target": "location_18",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_10",
+    "target": "location_19",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_10",
+    "target": "location_20",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_31",
+    "target": "concept_41",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_31",
+    "target": "concept_42",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_31",
+    "target": "location_43",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_31",
+    "target": "location_44",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_31",
+    "target": "location_45",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_31",
+    "target": "location_46",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_31",
+    "target": "location_47",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_31",
+    "target": "location_48",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_31",
+    "target": "location_49",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_31",
+    "target": "location_50",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_32",
+    "target": "concept_41",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_32",
+    "target": "concept_42",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_32",
+    "target": "location_43",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_32",
+    "target": "location_44",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_32",
+    "target": "location_45",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_32",
+    "target": "location_46",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_32",
+    "target": "location_47",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_32",
+    "target": "location_48",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_32",
+    "target": "location_49",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_32",
+    "target": "location_50",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_33",
+    "target": "concept_41",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_33",
+    "target": "concept_42",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_33",
+    "target": "location_43",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_33",
+    "target": "location_44",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_33",
+    "target": "location_45",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_33",
+    "target": "location_46",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_33",
+    "target": "location_47",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_33",
+    "target": "location_48",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_33",
+    "target": "location_49",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_33",
+    "target": "location_50",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_34",
+    "target": "concept_41",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_34",
+    "target": "concept_42",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_34",
+    "target": "location_43",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_34",
+    "target": "location_44",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_34",
+    "target": "location_45",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_34",
+    "target": "location_46",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_34",
+    "target": "location_47",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_34",
+    "target": "location_48",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_34",
+    "target": "location_49",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_34",
+    "target": "location_50",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_35",
+    "target": "concept_41",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_35",
+    "target": "concept_42",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_35",
+    "target": "location_43",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_35",
+    "target": "location_44",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_35",
+    "target": "location_45",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_35",
+    "target": "location_46",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_35",
+    "target": "location_47",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_35",
+    "target": "location_48",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_35",
+    "target": "location_49",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_35",
+    "target": "location_50",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_36",
+    "target": "concept_41",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_36",
+    "target": "concept_42",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_36",
+    "target": "location_43",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_36",
+    "target": "location_44",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_36",
+    "target": "location_45",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_36",
+    "target": "location_46",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_36",
+    "target": "location_47",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_36",
+    "target": "location_48",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_36",
+    "target": "location_49",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_36",
+    "target": "location_50",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_37",
+    "target": "concept_41",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_37",
+    "target": "concept_42",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_37",
+    "target": "location_43",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_37",
+    "target": "location_44",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_37",
+    "target": "location_45",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_37",
+    "target": "location_46",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_37",
+    "target": "location_47",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_37",
+    "target": "location_48",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_37",
+    "target": "location_49",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_37",
+    "target": "location_50",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_38",
+    "target": "concept_41",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_38",
+    "target": "concept_42",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_38",
+    "target": "location_43",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_38",
+    "target": "location_44",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_38",
+    "target": "location_45",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_38",
+    "target": "location_46",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_38",
+    "target": "location_47",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_38",
+    "target": "location_48",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_38",
+    "target": "location_49",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_38",
+    "target": "location_50",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_39",
+    "target": "concept_41",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_39",
+    "target": "concept_42",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_39",
+    "target": "location_43",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_39",
+    "target": "location_44",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_39",
+    "target": "location_45",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_39",
+    "target": "location_46",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_39",
+    "target": "location_47",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_39",
+    "target": "location_48",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_39",
+    "target": "location_49",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_39",
+    "target": "location_50",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_40",
+    "target": "concept_41",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_40",
+    "target": "concept_42",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_40",
+    "target": "location_43",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_40",
+    "target": "location_44",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_40",
+    "target": "location_45",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_40",
+    "target": "location_46",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_40",
+    "target": "location_47",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_40",
+    "target": "location_48",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_40",
+    "target": "location_49",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_40",
+    "target": "location_50",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_41",
+    "target": "location_43",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_41",
+    "target": "location_44",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_41",
+    "target": "location_45",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_41",
+    "target": "location_46",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_41",
+    "target": "location_47",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_41",
+    "target": "location_48",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_41",
+    "target": "location_49",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_41",
+    "target": "location_50",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_42",
+    "target": "location_43",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_42",
+    "target": "location_44",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_42",
+    "target": "location_45",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_42",
+    "target": "location_46",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_42",
+    "target": "location_47",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_42",
+    "target": "location_48",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_42",
+    "target": "location_49",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_42",
+    "target": "location_50",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_51",
+    "target": "concept_61",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_51",
+    "target": "concept_62",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_51",
+    "target": "location_63",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_52",
+    "target": "concept_61",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_52",
+    "target": "concept_62",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_52",
+    "target": "location_63",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_53",
+    "target": "concept_61",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_53",
+    "target": "concept_62",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_53",
+    "target": "location_63",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_54",
+    "target": "concept_61",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_54",
+    "target": "concept_62",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_54",
+    "target": "location_63",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_55",
+    "target": "concept_61",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_55",
+    "target": "concept_62",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_55",
+    "target": "location_63",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_56",
+    "target": "concept_61",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_56",
+    "target": "concept_62",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_56",
+    "target": "location_63",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_57",
+    "target": "concept_61",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_57",
+    "target": "concept_62",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_57",
+    "target": "location_63",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_58",
+    "target": "concept_61",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_58",
+    "target": "concept_62",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_58",
+    "target": "location_63",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_59",
+    "target": "concept_61",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_59",
+    "target": "concept_62",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_59",
+    "target": "location_63",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_60",
+    "target": "concept_61",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_60",
+    "target": "concept_62",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "person_60",
+    "target": "location_63",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_61",
+    "target": "location_63",
+    "label": "related",
+    "type": "related"
+  },
+  {
+    "source": "concept_62",
+    "target": "location_63",
+    "label": "related",
+    "type": "related"
+  }
+];
+        
+        console.log('Graph data loaded:', {
+            nodes: rawNodes.length,
+            edges: rawEdges.length,
+            nodeTypes: [...new Set(rawNodes.map(n => n.type))]
+        });
+        
+        // Error handling for empty data
+        if (rawNodes.length === 0) {
+            document.getElementById('graph-svg').innerHTML = 
+                '<text x="50%" y="50%" text-anchor="middle" fill="red" font-size="20">No data to visualize</text>';
+            throw new Error('No nodes to display');
+        }
+        
+        // Setup dimensions
+        const container = document.querySelector('.graph-container');
+        const width = container.clientWidth - 4;
+        const height = container.clientHeight - 4;
+        
+        console.log('SVG dimensions:', {width, height});
+        
+        const svg = d3.select("#graph-svg")
+            .attr("width", width)
+            .attr("height", height);
+        
+        // Clear any existing content
+        svg.selectAll("*").remove();
+        
+        // Add zoom behavior
+        const g = svg.append("g");
+        
+        const zoom = d3.zoom()
+            .scaleExtent([0.1, 3])
+            .on("zoom", (event) => {
+                g.attr("transform", event.transform);
+            });
+        
+        svg.call(zoom);
+        
+        // Color mapping for entity types
+        const colorScale = d3.scaleOrdinal()
+            .domain(["Person", "Organization", "Concept", "Location", "Unknown"])
+            .range(["#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#69b3a2"]);
+        
+        // Create force simulation
+        const simulation = d3.forceSimulation(rawNodes)
+            .force("link", d3.forceLink(rawEdges).id(d => d.id).distance(120).strength(0.5))
+            .force("charge", d3.forceManyBody().strength(-400))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .force("collision", d3.forceCollide().radius(30));
+        
+        // Create links
+        const link = g.append("g")
+            .attr("class", "links")
+            .selectAll("line")
+            .data(rawEdges)
+            .enter()
+            .append("line")
+            .attr("class", "link")
+            .attr("stroke-width", 2);
+        
+        // Create edge labels
+        const edgeLabels = g.append("g")
+            .attr("class", "edge-labels")
+            .selectAll("text")
+            .data(rawEdges)
+            .enter()
+            .append("text")
+            .attr("class", "edge-label")
+            .text(d => d.label || d.type);
+        
+        // Create nodes
+        const node = g.append("g")
+            .attr("class", "nodes")
+            .selectAll("circle")
+            .data(rawNodes)
+            .enter()
+            .append("circle")
+            .attr("class", "node")
+            .attr("r", 12)
+            .attr("fill", d => colorScale(d.type))
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended))
+            .on("mouseover", handleMouseOver)
+            .on("mouseout", handleMouseOut)
+            .on("click", handleClick);
+        
+        // Create node labels
+        const nodeLabels = g.append("g")
+            .attr("class", "node-labels")
+            .selectAll("text")
+            .data(rawNodes)
+            .enter()
+            .append("text")
+            .attr("class", "node-label")
+            .attr("dy", 25)
+            .text(d => d.label);
+        
+        // Add tooltips
+        node.append("title")
+            .text(d => `${d.label}\nType: ${d.type}\nID: ${d.id}`);
+        
+        // Update positions on simulation tick
+        simulation.on("tick", () => {
+            // Update links
+            link
+                .attr("x1", d => Math.max(20, Math.min(width - 20, d.source.x)))
+                .attr("y1", d => Math.max(20, Math.min(height - 20, d.source.y)))
+                .attr("x2", d => Math.max(20, Math.min(width - 20, d.target.x)))
+                .attr("y2", d => Math.max(20, Math.min(height - 20, d.target.y)));
+            
+            // Update edge labels
+            edgeLabels
+                .attr("x", d => (d.source.x + d.target.x) / 2)
+                .attr("y", d => (d.source.y + d.target.y) / 2);
+            
+            // Update nodes with boundary constraints
+            node
+                .attr("cx", d => d.x = Math.max(20, Math.min(width - 20, d.x)))
+                .attr("cy", d => d.y = Math.max(20, Math.min(height - 20, d.y)));
+            
+            // Update node labels
+            nodeLabels
+                .attr("x", d => d.x)
+                .attr("y", d => d.y);
+        });
+        
+        // Interaction handlers
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+        
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+        
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+        
+        function handleMouseOver(event, d) {
+            d3.select(this)
+                .transition()
+                .duration(200)
+                .attr("r", 16)
+                .attr("stroke", "#333")
+                .attr("stroke-width", 3);
+        }
+        
+        function handleMouseOut(event, d) {
+            d3.select(this)
+                .transition()
+                .duration(200)
+                .attr("r", 12)
+                .attr("stroke", "none");
+        }
+        
+        function handleClick(event, d) {
+            console.log('Node clicked:', d);
+            alert(`Entity: ${d.label}\nType: ${d.type}\nID: ${d.id}`);
+        }
+        
+        // Control functions
+        function resetGraph() {
+            svg.transition()
+                .duration(750)
+                .call(zoom.transform, d3.zoomIdentity);
+            simulation.alpha(1).restart();
+        }
+        
+        let simulationRunning = true;
+        function pauseSimulation() {
+            if (simulationRunning) {
+                simulation.stop();
+                simulationRunning = false;
+                event.target.textContent = 'Resume';
+            } else {
+                simulation.restart();
+                simulationRunning = true;
+                event.target.textContent = 'Pause';
+            }
+        }
+        
+        // Initial layout
+        console.log('Graph initialization complete');
+        
+        // Auto-fit to content after initial layout
+        setTimeout(() => {
+            const bounds = g.node().getBBox();
+            const fullWidth = bounds.width;
+            const fullHeight = bounds.height;
+            const midX = bounds.x + fullWidth / 2;
+            const midY = bounds.y + fullHeight / 2;
+            
+            if (fullWidth === 0 || fullHeight === 0) return;
+            
+            const scale = Math.min(width / fullWidth, height / fullHeight) * 0.8;
+            const translate = [width / 2 - scale * midX, height / 2 - scale * midY];
+            
+            svg.transition()
+                .duration(1000)
+                .call(zoom.transform, d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale));
+        }, 2000);
+        
+    </script>
+</body>
+</html>

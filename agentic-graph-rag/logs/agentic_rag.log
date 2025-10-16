@@ -1,0 +1,679 @@
+2025-10-13 21:10:24,356 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:10:24,356 - __main__ - INFO - ============================================================
+2025-10-13 21:10:24,358 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 21:10:24,358 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 21:10:24,358 - __main__ - INFO - ============================================================
+2025-10-13 21:10:24,359 - __main__ - INFO - Configuration Summary:
+2025-10-13 21:10:24,359 - __main__ - INFO -   api_configured: True
+2025-10-13 21:10:24,359 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 21:10:24,359 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 21:10:24,360 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 21:10:24,360 - __main__ - INFO -   max_query_time: 60
+2025-10-13 21:10:24,360 - __main__ - INFO -   server_port: 8000
+2025-10-13 21:10:24,360 - __main__ - INFO -   debug_mode: True
+2025-10-13 21:10:24,361 - __main__ - INFO -   log_level: INFO
+2025-10-13 21:10:24,367 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:10:24,368 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 21:10:24,368 - __main__ - INFO - 🚀 Starting Agentic RAG System in 'full' mode...
+2025-10-13 21:10:24,368 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 21:10:24,368 - __main__ - ERROR - ❌ Component initialization failed: Neo4jGraphStore.__init__() got an unexpected keyword argument 'uri'
+2025-10-13 21:10:24,368 - __main__ - ERROR - ❌ System startup failed: Neo4jGraphStore.__init__() got an unexpected keyword argument 'uri'
+2025-10-13 21:10:24,368 - __main__ - ERROR - ❌ System startup failed: Neo4jGraphStore.__init__() got an unexpected keyword argument 'uri'
+2025-10-13 21:10:24,369 - __main__ - ERROR - Exception details: TypeError: Neo4jGraphStore.__init__() got an unexpected keyword argument 'uri'
+2025-10-13 21:10:24,369 - __main__ - INFO - 🛑 Stopping Agentic RAG System...
+2025-10-13 21:10:24,370 - __main__ - INFO - ✅ Agentic RAG System stopped successfully
+2025-10-13 21:38:36,228 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:38:36,228 - __main__ - INFO - ============================================================
+2025-10-13 21:38:36,228 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 21:38:36,228 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 21:38:36,229 - __main__ - INFO - ============================================================
+2025-10-13 21:38:36,229 - __main__ - INFO - Configuration Summary:
+2025-10-13 21:38:36,229 - __main__ - INFO -   api_configured: True
+2025-10-13 21:38:36,229 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 21:38:36,229 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 21:38:36,230 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 21:38:36,230 - __main__ - INFO -   max_query_time: 60
+2025-10-13 21:38:36,230 - __main__ - INFO -   server_port: 8000
+2025-10-13 21:38:36,230 - __main__ - INFO -   debug_mode: True
+2025-10-13 21:38:36,230 - __main__ - INFO -   log_level: INFO
+2025-10-13 21:38:36,237 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:38:36,237 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 21:38:36,237 - __main__ - INFO - 🚀 Starting Agentic RAG System in 'full' mode...
+2025-10-13 21:38:36,238 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 21:38:38,375 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 21:38:38,375 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 21:38:38,375 - __main__ - ERROR - ❌ Component initialization failed: EmbeddingManager.__init__() got an unexpected keyword argument 'api_key'
+2025-10-13 21:38:38,376 - __main__ - ERROR - ❌ System startup failed: EmbeddingManager.__init__() got an unexpected keyword argument 'api_key'
+2025-10-13 21:38:38,376 - __main__ - ERROR - ❌ System startup failed: EmbeddingManager.__init__() got an unexpected keyword argument 'api_key'
+2025-10-13 21:38:38,376 - __main__ - ERROR - Exception details: TypeError: EmbeddingManager.__init__() got an unexpected keyword argument 'api_key'
+2025-10-13 21:38:38,376 - __main__ - INFO - 🛑 Stopping Agentic RAG System...
+2025-10-13 21:38:38,377 - core.neo4j_graph_store_v2 - INFO - Neo4j connection closed
+2025-10-13 21:39:58,950 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:39:58,951 - __main__ - INFO - ============================================================
+2025-10-13 21:39:58,951 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 21:39:58,951 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 21:39:58,951 - __main__ - INFO - ============================================================
+2025-10-13 21:39:58,951 - __main__ - INFO - Configuration Summary:
+2025-10-13 21:39:58,952 - __main__ - INFO -   api_configured: True
+2025-10-13 21:39:58,952 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 21:39:58,952 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 21:39:58,952 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 21:39:58,952 - __main__ - INFO -   max_query_time: 60
+2025-10-13 21:39:58,952 - __main__ - INFO -   server_port: 8000
+2025-10-13 21:39:58,952 - __main__ - INFO -   debug_mode: True
+2025-10-13 21:39:58,953 - __main__ - INFO -   log_level: INFO
+2025-10-13 21:39:58,960 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:39:58,960 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 21:39:58,960 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 21:39:59,061 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 21:39:59,061 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 21:39:59,418 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 21:39:59,418 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 21:39:59,418 - __main__ - ERROR - ❌ Component initialization failed: FAISSIndexManager.__init__() got an unexpected keyword argument 'dimension'
+2025-10-13 21:39:59,418 - __main__ - ERROR - ❌ System startup failed: FAISSIndexManager.__init__() got an unexpected keyword argument 'dimension'
+2025-10-13 21:39:59,418 - __main__ - ERROR - Exception details: TypeError: FAISSIndexManager.__init__() got an unexpected keyword argument 'dimension'
+2025-10-13 21:39:59,418 - __main__ - INFO - 🛑 Stopping Agentic RAG System...
+2025-10-13 21:39:59,419 - core.neo4j_graph_store_v2 - INFO - Neo4j connection closed
+2025-10-13 21:39:59,423 - config - INFO - Agentic RAG configuration loaded successfully
+2025-10-13 21:39:59,429 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:39:59,429 - __main__ - INFO - ============================================================
+2025-10-13 21:39:59,429 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 21:39:59,430 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 21:39:59,430 - __main__ - INFO - ============================================================
+2025-10-13 21:39:59,431 - __main__ - INFO - Configuration Summary:
+2025-10-13 21:39:59,431 - __main__ - INFO -   api_configured: True
+2025-10-13 21:39:59,431 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 21:39:59,431 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 21:39:59,431 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 21:39:59,431 - __main__ - INFO -   max_query_time: 60
+2025-10-13 21:39:59,432 - __main__ - INFO -   server_port: 8000
+2025-10-13 21:39:59,432 - __main__ - INFO -   debug_mode: True
+2025-10-13 21:39:59,432 - __main__ - INFO -   log_level: INFO
+2025-10-13 21:39:59,439 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:39:59,439 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 21:39:59,439 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 21:39:59,517 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 21:39:59,517 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 21:39:59,742 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 21:39:59,742 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 21:39:59,742 - __main__ - ERROR - ❌ Component initialization failed: FAISSIndexManager.__init__() got an unexpected keyword argument 'dimension'
+2025-10-13 21:39:59,742 - __main__ - ERROR - ❌ System startup failed: FAISSIndexManager.__init__() got an unexpected keyword argument 'dimension'
+2025-10-13 21:39:59,743 - __main__ - ERROR - Exception details: TypeError: FAISSIndexManager.__init__() got an unexpected keyword argument 'dimension'
+2025-10-13 21:39:59,743 - __main__ - INFO - 🛑 Stopping Agentic RAG System...
+2025-10-13 21:39:59,744 - core.neo4j_graph_store_v2 - INFO - Neo4j connection closed
+2025-10-13 21:43:07,352 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:43:07,353 - __main__ - INFO - ============================================================
+2025-10-13 21:43:07,353 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 21:43:07,353 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 21:43:07,353 - __main__ - INFO - ============================================================
+2025-10-13 21:43:07,353 - __main__ - INFO - Configuration Summary:
+2025-10-13 21:43:07,353 - __main__ - INFO -   api_configured: True
+2025-10-13 21:43:07,354 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 21:43:07,354 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 21:43:07,354 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 21:43:07,354 - __main__ - INFO -   max_query_time: 60
+2025-10-13 21:43:07,354 - __main__ - INFO -   server_port: 8000
+2025-10-13 21:43:07,354 - __main__ - INFO -   debug_mode: True
+2025-10-13 21:43:07,354 - __main__ - INFO -   log_level: INFO
+2025-10-13 21:43:07,365 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:43:07,366 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 21:43:07,366 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 21:43:07,455 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 21:43:07,455 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 21:43:07,848 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 21:43:07,849 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 21:43:07,849 - core.faiss_index_manager - WARNING - Unknown index type: IndexFlatIP, using flat
+2025-10-13 21:43:07,850 - core.faiss_index_manager - INFO - Created new IndexFlatIP index
+2025-10-13 21:43:07,850 - core.faiss_index_manager - INFO - FAISS Index Manager initialized (dimension: 1536)
+2025-10-13 21:43:07,850 - __main__ - INFO - ✓ FAISS Index Manager initialized
+2025-10-13 21:43:07,850 - __main__ - ERROR - ❌ Component initialization failed: CypherTraversalEngine.__init__() got an unexpected keyword argument 'graph_store'
+2025-10-13 21:43:07,850 - __main__ - ERROR - ❌ System startup failed: CypherTraversalEngine.__init__() got an unexpected keyword argument 'graph_store'
+2025-10-13 21:43:07,851 - __main__ - ERROR - Exception details: TypeError: CypherTraversalEngine.__init__() got an unexpected keyword argument 'graph_store'
+2025-10-13 21:43:07,851 - __main__ - INFO - 🛑 Stopping Agentic RAG System...
+2025-10-13 21:43:07,851 - core.neo4j_graph_store_v2 - INFO - Neo4j connection closed
+2025-10-13 21:43:07,851 - __main__ - WARNING - Error closing graph store: object NoneType can't be used in 'await' expression
+2025-10-13 21:43:07,876 - core.faiss_index_manager - INFO - Saved index with 0 vectors
+2025-10-13 21:43:07,876 - __main__ - INFO - ✓ FAISS index saved
+2025-10-13 21:43:07,877 - __main__ - INFO - ✅ Agentic RAG System stopped successfully
+2025-10-13 21:44:03,872 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:44:03,873 - __main__ - INFO - ============================================================
+2025-10-13 21:44:03,873 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 21:44:03,873 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 21:44:03,873 - __main__ - INFO - ============================================================
+2025-10-13 21:44:03,873 - __main__ - INFO - Configuration Summary:
+2025-10-13 21:44:03,873 - __main__ - INFO -   api_configured: True
+2025-10-13 21:44:03,873 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 21:44:03,873 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 21:44:03,873 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 21:44:03,874 - __main__ - INFO -   max_query_time: 60
+2025-10-13 21:44:03,874 - __main__ - INFO -   server_port: 8000
+2025-10-13 21:44:03,874 - __main__ - INFO -   debug_mode: True
+2025-10-13 21:44:03,874 - __main__ - INFO -   log_level: INFO
+2025-10-13 21:44:03,880 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:44:03,886 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 21:44:03,889 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 21:44:03,960 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 21:44:03,960 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 21:44:04,237 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 21:44:04,237 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 21:44:04,239 - core.faiss_index_manager - INFO - Loaded index with 0 vectors
+2025-10-13 21:44:04,239 - core.faiss_index_manager - INFO - FAISS Index Manager initialized (dimension: 1536)
+2025-10-13 21:44:04,239 - __main__ - INFO - ✓ FAISS Index Manager initialized
+2025-10-13 21:44:04,239 - core.cypher_traversal_engine - INFO - Cypher Traversal Engine initialized
+2025-10-13 21:44:04,239 - __main__ - INFO - ✓ Cypher Traversal Engine initialized
+2025-10-13 21:44:04,239 - __main__ - ERROR - ❌ Component initialization failed: QueryAnalyzer.__init__() got an unexpected keyword argument 'embedding_manager'
+2025-10-13 21:44:04,239 - __main__ - ERROR - ❌ System startup failed: QueryAnalyzer.__init__() got an unexpected keyword argument 'embedding_manager'
+2025-10-13 21:44:04,239 - __main__ - ERROR - Exception details: TypeError: QueryAnalyzer.__init__() got an unexpected keyword argument 'embedding_manager'
+2025-10-13 21:44:04,239 - __main__ - INFO - 🛑 Stopping Agentic RAG System...
+2025-10-13 21:44:04,239 - core.neo4j_graph_store_v2 - INFO - Neo4j connection closed
+2025-10-13 21:44:04,239 - __main__ - WARNING - Error closing graph store: object NoneType can't be used in 'await' expression
+2025-10-13 21:44:04,275 - core.faiss_index_manager - INFO - Saved index with 0 vectors
+2025-10-13 21:44:04,276 - __main__ - INFO - ✓ FAISS index saved
+2025-10-13 21:44:04,276 - __main__ - INFO - ✅ Agentic RAG System stopped successfully
+2025-10-13 21:45:48,284 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:45:48,286 - __main__ - INFO - ============================================================
+2025-10-13 21:45:48,286 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 21:45:48,286 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 21:45:48,286 - __main__ - INFO - ============================================================
+2025-10-13 21:45:48,286 - __main__ - INFO - Configuration Summary:
+2025-10-13 21:45:48,287 - __main__ - INFO -   api_configured: True
+2025-10-13 21:45:48,287 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 21:45:48,287 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 21:45:48,287 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 21:45:48,287 - __main__ - INFO -   max_query_time: 60
+2025-10-13 21:45:48,287 - __main__ - INFO -   server_port: 8000
+2025-10-13 21:45:48,287 - __main__ - INFO -   debug_mode: True
+2025-10-13 21:45:48,287 - __main__ - INFO -   log_level: INFO
+2025-10-13 21:45:48,293 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:45:48,294 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 21:45:48,294 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 21:45:48,372 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 21:45:48,372 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 21:45:48,781 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 21:45:48,781 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 21:45:48,785 - core.faiss_index_manager - INFO - Loaded index with 0 vectors
+2025-10-13 21:45:48,785 - core.faiss_index_manager - INFO - FAISS Index Manager initialized (dimension: 1536)
+2025-10-13 21:45:48,785 - __main__ - INFO - ✓ FAISS Index Manager initialized
+2025-10-13 21:45:48,787 - core.cypher_traversal_engine - INFO - Cypher Traversal Engine initialized
+2025-10-13 21:45:48,788 - __main__ - INFO - ✓ Cypher Traversal Engine initialized
+2025-10-13 21:45:48,788 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 21:45:48,788 - __main__ - INFO - ✓ Query Analyzer initialized
+2025-10-13 21:45:48,788 - __main__ - ERROR - ❌ Component initialization failed: type object 'ReasoningType' has no attribute 'STATISTICAL'
+2025-10-13 21:45:48,788 - __main__ - ERROR - ❌ System startup failed: type object 'ReasoningType' has no attribute 'STATISTICAL'
+2025-10-13 21:45:48,788 - __main__ - ERROR - Exception details: AttributeError: type object 'ReasoningType' has no attribute 'STATISTICAL'
+2025-10-13 21:45:48,788 - __main__ - INFO - 🛑 Stopping Agentic RAG System...
+2025-10-13 21:45:48,789 - core.neo4j_graph_store_v2 - INFO - Neo4j connection closed
+2025-10-13 21:45:48,789 - __main__ - WARNING - Error closing graph store: object NoneType can't be used in 'await' expression
+2025-10-13 21:45:48,820 - core.faiss_index_manager - INFO - Saved index with 0 vectors
+2025-10-13 21:45:48,821 - __main__ - INFO - ✓ FAISS index saved
+2025-10-13 21:45:48,821 - __main__ - INFO - ✅ Agentic RAG System stopped successfully
+2025-10-13 21:46:38,274 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:46:38,275 - __main__ - INFO - ============================================================
+2025-10-13 21:46:38,275 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 21:46:38,275 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 21:46:38,275 - __main__ - INFO - ============================================================
+2025-10-13 21:46:38,275 - __main__ - INFO - Configuration Summary:
+2025-10-13 21:46:38,275 - __main__ - INFO -   api_configured: True
+2025-10-13 21:46:38,275 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 21:46:38,275 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 21:46:38,276 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 21:46:38,276 - __main__ - INFO -   max_query_time: 60
+2025-10-13 21:46:38,276 - __main__ - INFO -   server_port: 8000
+2025-10-13 21:46:38,276 - __main__ - INFO -   debug_mode: True
+2025-10-13 21:46:38,276 - __main__ - INFO -   log_level: INFO
+2025-10-13 21:46:38,282 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:46:38,283 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 21:46:38,284 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 21:46:38,363 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 21:46:38,363 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 21:46:38,627 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 21:46:38,629 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 21:46:38,631 - core.faiss_index_manager - INFO - Loaded index with 0 vectors
+2025-10-13 21:46:38,631 - core.faiss_index_manager - INFO - FAISS Index Manager initialized (dimension: 1536)
+2025-10-13 21:46:38,632 - __main__ - INFO - ✓ FAISS Index Manager initialized
+2025-10-13 21:46:38,632 - core.cypher_traversal_engine - INFO - Cypher Traversal Engine initialized
+2025-10-13 21:46:38,633 - __main__ - INFO - ✓ Cypher Traversal Engine initialized
+2025-10-13 21:46:38,633 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 21:46:38,633 - __main__ - INFO - ✓ Query Analyzer initialized
+2025-10-13 21:46:38,634 - core.reasoning_engine_unified - INFO - Reasoning Engine initialized
+2025-10-13 21:46:38,635 - __main__ - INFO - ✓ Reasoning Engine initialized
+2025-10-13 21:46:38,635 - core.interactive_graph_editor - INFO - Graph Editor initialized
+2025-10-13 21:46:38,636 - core.interactive_graph_editor - INFO - Interactive Graph Editor initialized
+2025-10-13 21:46:38,636 - __main__ - INFO - ✓ Interactive Graph Editor initialized
+2025-10-13 21:46:38,637 - __main__ - ERROR - ❌ Component initialization failed: AgenticRAGAPI.__init__() got an unexpected keyword argument 'faiss_manager'
+2025-10-13 21:46:38,638 - __main__ - ERROR - ❌ System startup failed: AgenticRAGAPI.__init__() got an unexpected keyword argument 'faiss_manager'
+2025-10-13 21:46:38,640 - __main__ - ERROR - Exception details: TypeError: AgenticRAGAPI.__init__() got an unexpected keyword argument 'faiss_manager'
+2025-10-13 21:46:38,641 - __main__ - INFO - 🛑 Stopping Agentic RAG System...
+2025-10-13 21:46:38,643 - core.neo4j_graph_store_v2 - INFO - Neo4j connection closed
+2025-10-13 21:46:38,643 - __main__ - WARNING - Error closing graph store: object NoneType can't be used in 'await' expression
+2025-10-13 21:46:38,678 - core.faiss_index_manager - INFO - Saved index with 0 vectors
+2025-10-13 21:46:38,678 - __main__ - INFO - ✓ FAISS index saved
+2025-10-13 21:46:38,679 - __main__ - INFO - ✅ Agentic RAG System stopped successfully
+2025-10-13 21:47:20,867 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:47:20,868 - __main__ - INFO - ============================================================
+2025-10-13 21:47:20,868 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 21:47:20,868 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 21:47:20,868 - __main__ - INFO - ============================================================
+2025-10-13 21:47:20,869 - __main__ - INFO - Configuration Summary:
+2025-10-13 21:47:20,869 - __main__ - INFO -   api_configured: True
+2025-10-13 21:47:20,869 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 21:47:20,870 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 21:47:20,870 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 21:47:20,871 - __main__ - INFO -   max_query_time: 60
+2025-10-13 21:47:20,871 - __main__ - INFO -   server_port: 8000
+2025-10-13 21:47:20,872 - __main__ - INFO -   debug_mode: True
+2025-10-13 21:47:20,872 - __main__ - INFO -   log_level: INFO
+2025-10-13 21:47:20,883 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:47:20,883 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 21:47:20,883 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 21:47:20,961 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 21:47:20,961 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 21:47:21,228 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 21:47:21,229 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 21:47:21,230 - core.faiss_index_manager - INFO - Loaded index with 0 vectors
+2025-10-13 21:47:21,230 - core.faiss_index_manager - INFO - FAISS Index Manager initialized (dimension: 1536)
+2025-10-13 21:47:21,230 - __main__ - INFO - ✓ FAISS Index Manager initialized
+2025-10-13 21:47:21,230 - core.cypher_traversal_engine - INFO - Cypher Traversal Engine initialized
+2025-10-13 21:47:21,230 - __main__ - INFO - ✓ Cypher Traversal Engine initialized
+2025-10-13 21:47:21,231 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 21:47:21,231 - __main__ - INFO - ✓ Query Analyzer initialized
+2025-10-13 21:47:21,231 - core.reasoning_engine_unified - INFO - Reasoning Engine initialized
+2025-10-13 21:47:21,231 - __main__ - INFO - ✓ Reasoning Engine initialized
+2025-10-13 21:47:21,231 - core.interactive_graph_editor - INFO - Graph Editor initialized
+2025-10-13 21:47:21,231 - core.interactive_graph_editor - INFO - Interactive Graph Editor initialized
+2025-10-13 21:47:21,231 - __main__ - INFO - ✓ Interactive Graph Editor initialized
+2025-10-13 21:47:21,231 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 21:47:21,238 - core.agentic_rag_api - INFO - Agentic RAG API initialized
+2025-10-13 21:47:21,238 - __main__ - INFO - ✓ Agentic RAG API initialized
+2025-10-13 21:47:21,238 - __main__ - INFO - 🎉 All 8 components initialized successfully!
+2025-10-13 21:47:21,238 - __main__ - INFO - 🔧 Testing component connections...
+2025-10-13 21:47:21,242 - __main__ - INFO - Connection test results:
+2025-10-13 21:47:21,242 - __main__ - INFO -   neo4j: ❌ Failed: 'Neo4jGraphStore' object has no attribute 'test_connection'
+2025-10-13 21:47:21,243 - __main__ - INFO -   faiss: ✅ Ready
+2025-10-13 21:47:21,243 - __main__ - INFO -   embeddings: ❌ Failed: 'EmbeddingManager' object has no attribute 'get_embedding'
+2025-10-13 21:47:21,243 - __main__ - WARNING - Some components failed connection tests: ['neo4j', 'embeddings']
+2025-10-13 21:47:21,243 - __main__ - INFO - 🛑 Stopping Agentic RAG System...
+2025-10-13 21:47:21,243 - core.neo4j_graph_store_v2 - INFO - Neo4j connection closed
+2025-10-13 21:47:21,243 - __main__ - WARNING - Error closing graph store: object NoneType can't be used in 'await' expression
+2025-10-13 21:47:21,264 - core.faiss_index_manager - INFO - Saved index with 0 vectors
+2025-10-13 21:47:21,264 - __main__ - INFO - ✓ FAISS index saved
+2025-10-13 21:47:21,264 - __main__ - INFO - ✅ Agentic RAG System stopped successfully
+2025-10-13 21:50:42,008 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:50:42,008 - __main__ - INFO - ============================================================
+2025-10-13 21:50:42,009 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 21:50:42,009 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 21:50:42,009 - __main__ - INFO - ============================================================
+2025-10-13 21:50:42,009 - __main__ - INFO - Configuration Summary:
+2025-10-13 21:50:42,009 - __main__ - INFO -   api_configured: True
+2025-10-13 21:50:42,009 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 21:50:42,009 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 21:50:42,010 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 21:50:42,010 - __main__ - INFO -   max_query_time: 60
+2025-10-13 21:50:42,010 - __main__ - INFO -   server_port: 8000
+2025-10-13 21:50:42,010 - __main__ - INFO -   debug_mode: True
+2025-10-13 21:50:42,010 - __main__ - INFO -   log_level: INFO
+2025-10-13 21:50:42,015 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:50:42,015 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 21:50:42,017 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 21:50:42,088 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 21:50:42,088 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 21:50:42,370 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 21:50:42,370 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 21:50:42,375 - core.faiss_index_manager - INFO - Loaded index with 0 vectors
+2025-10-13 21:50:42,375 - core.faiss_index_manager - INFO - FAISS Index Manager initialized (dimension: 1536)
+2025-10-13 21:50:42,375 - __main__ - INFO - ✓ FAISS Index Manager initialized
+2025-10-13 21:50:42,375 - core.cypher_traversal_engine - INFO - Cypher Traversal Engine initialized
+2025-10-13 21:50:42,376 - __main__ - INFO - ✓ Cypher Traversal Engine initialized
+2025-10-13 21:50:42,376 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 21:50:42,376 - __main__ - INFO - ✓ Query Analyzer initialized
+2025-10-13 21:50:42,377 - core.reasoning_engine_unified - INFO - Reasoning Engine initialized
+2025-10-13 21:50:42,377 - __main__ - INFO - ✓ Reasoning Engine initialized
+2025-10-13 21:50:42,377 - core.interactive_graph_editor - INFO - Graph Editor initialized
+2025-10-13 21:50:42,377 - core.interactive_graph_editor - INFO - Interactive Graph Editor initialized
+2025-10-13 21:50:42,377 - __main__ - INFO - ✓ Interactive Graph Editor initialized
+2025-10-13 21:50:42,377 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 21:50:42,382 - core.agentic_rag_api - INFO - Agentic RAG API initialized
+2025-10-13 21:50:42,382 - __main__ - INFO - ✓ Agentic RAG API initialized
+2025-10-13 21:50:42,383 - __main__ - INFO - 🎉 All 8 components initialized successfully!
+2025-10-13 21:50:42,383 - __main__ - INFO - 🔧 Testing component connections...
+2025-10-13 21:50:42,383 - core.embedding_manager_v2 - INFO - Generating embeddings for 1 texts
+2025-10-13 21:50:42,383 - core.embedding_manager_v2 - INFO - Processing 1 uncached texts
+2025-10-13 21:50:43,031 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-13 21:50:43,058 - core.embedding_manager_v2 - WARNING - Embedding API attempt 1 failed: Expecting value: line 1 column 1 (char 0)
+2025-10-13 21:50:44,499 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-13 21:50:44,506 - core.embedding_manager_v2 - WARNING - Embedding API attempt 2 failed: Expecting value: line 1 column 1 (char 0)
+2025-10-13 21:50:46,930 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2025-10-13 21:50:46,985 - core.embedding_manager_v2 - WARNING - Embedding API attempt 3 failed: Expecting value: line 1 column 1 (char 0)
+2025-10-13 21:50:46,986 - core.embedding_manager_v2 - ERROR - Failed to get embeddings for batch, using zero vectors
+2025-10-13 21:50:46,993 - __main__ - INFO - Connection test results:
+2025-10-13 21:50:46,993 - __main__ - INFO -   neo4j: ✅ Connected
+2025-10-13 21:50:46,993 - __main__ - INFO -   faiss: ✅ Ready (vectors: 0)
+2025-10-13 21:50:46,993 - __main__ - INFO -   embeddings: ✅ Connected (dimension: 1536)
+2025-10-13 21:50:46,994 - __main__ - INFO - ✅ All connection tests passed!
+2025-10-13 21:50:46,994 - __main__ - INFO - 🛑 Stopping Agentic RAG System...
+2025-10-13 21:50:46,994 - core.neo4j_graph_store_v2 - INFO - Neo4j connection closed
+2025-10-13 21:50:46,995 - __main__ - WARNING - Error closing graph store: object NoneType can't be used in 'await' expression
+2025-10-13 21:50:47,015 - core.faiss_index_manager - INFO - Saved index with 0 vectors
+2025-10-13 21:50:47,016 - __main__ - INFO - ✓ FAISS index saved
+2025-10-13 21:50:47,016 - __main__ - INFO - ✅ Agentic RAG System stopped successfully
+2025-10-13 21:52:13,790 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:52:13,790 - __main__ - INFO - ============================================================
+2025-10-13 21:52:13,790 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 21:52:13,791 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 21:52:13,791 - __main__ - INFO - ============================================================
+2025-10-13 21:52:13,791 - __main__ - INFO - Configuration Summary:
+2025-10-13 21:52:13,791 - __main__ - INFO -   api_configured: True
+2025-10-13 21:52:13,791 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 21:52:13,791 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 21:52:13,791 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 21:52:13,791 - __main__ - INFO -   max_query_time: 60
+2025-10-13 21:52:13,791 - __main__ - INFO -   server_port: 8000
+2025-10-13 21:52:13,791 - __main__ - INFO -   debug_mode: True
+2025-10-13 21:52:13,791 - __main__ - INFO -   log_level: INFO
+2025-10-13 21:52:13,797 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:52:13,797 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 21:52:13,797 - __main__ - INFO - 🚀 Starting Agentic RAG System in 'full' mode...
+2025-10-13 21:52:13,798 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 21:52:13,898 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 21:52:13,899 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 21:52:14,257 - core.embedding_manager_v2 - INFO - Loaded 1 cached embeddings
+2025-10-13 21:52:14,258 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 21:52:14,258 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 21:52:14,262 - core.faiss_index_manager - INFO - Loaded index with 0 vectors
+2025-10-13 21:52:14,262 - core.faiss_index_manager - INFO - FAISS Index Manager initialized (dimension: 1536)
+2025-10-13 21:52:14,263 - __main__ - INFO - ✓ FAISS Index Manager initialized
+2025-10-13 21:52:14,263 - core.cypher_traversal_engine - INFO - Cypher Traversal Engine initialized
+2025-10-13 21:52:14,263 - __main__ - INFO - ✓ Cypher Traversal Engine initialized
+2025-10-13 21:52:14,264 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 21:52:14,264 - __main__ - INFO - ✓ Query Analyzer initialized
+2025-10-13 21:52:14,264 - core.reasoning_engine_unified - INFO - Reasoning Engine initialized
+2025-10-13 21:52:14,264 - __main__ - INFO - ✓ Reasoning Engine initialized
+2025-10-13 21:52:14,265 - core.interactive_graph_editor - INFO - Graph Editor initialized
+2025-10-13 21:52:14,265 - core.interactive_graph_editor - INFO - Interactive Graph Editor initialized
+2025-10-13 21:52:14,265 - __main__ - INFO - ✓ Interactive Graph Editor initialized
+2025-10-13 21:52:14,265 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 21:52:14,270 - core.agentic_rag_api - INFO - Agentic RAG API initialized
+2025-10-13 21:52:14,271 - __main__ - INFO - ✓ Agentic RAG API initialized
+2025-10-13 21:52:14,271 - __main__ - INFO - 🎉 All 8 components initialized successfully!
+2025-10-13 21:52:14,271 - __main__ - INFO - 🔧 Testing component connections...
+2025-10-13 21:52:14,271 - core.embedding_manager_v2 - INFO - Generating embeddings for 1 texts
+2025-10-13 21:52:14,278 - __main__ - INFO - Connection test results:
+2025-10-13 21:52:14,278 - __main__ - INFO -   neo4j: ✅ Connected
+2025-10-13 21:52:14,279 - __main__ - INFO -   faiss: ✅ Ready (vectors: 0)
+2025-10-13 21:52:14,279 - __main__ - INFO -   embeddings: ✅ Connected (dimension: 1536)
+2025-10-13 21:52:14,279 - __main__ - INFO - ✅ All connection tests passed!
+2025-10-13 21:52:14,279 - __main__ - INFO - 🚀 Starting Agentic RAG API server...
+2025-10-13 21:52:14,280 - __main__ - INFO - ✓ API server started on http://localhost:8000
+2025-10-13 21:52:16,291 - __main__ - INFO - 🖥️  Starting Agentic RAG GUI...
+2025-10-13 21:52:17,102 - core.agentic_rag_gui - INFO - Agentic RAG GUI initialized
+2025-10-13 21:52:58,989 - __main__ - INFO - Received signal 2, initiating shutdown...
+2025-10-13 21:52:58,989 - __main__ - INFO - 🛑 Stopping Agentic RAG System...
+2025-10-13 21:52:58,989 - core.neo4j_graph_store_v2 - INFO - Neo4j connection closed
+2025-10-13 21:52:58,989 - __main__ - INFO - ✓ Graph store connection closed
+2025-10-13 21:52:59,017 - core.faiss_index_manager - INFO - Saved index with 0 vectors
+2025-10-13 21:52:59,018 - __main__ - INFO - ✓ FAISS index saved
+2025-10-13 21:52:59,019 - __main__ - INFO - ✅ Agentic RAG System stopped successfully
+2025-10-13 21:54:06,175 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:54:06,175 - __main__ - INFO - ============================================================
+2025-10-13 21:54:06,175 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 21:54:06,176 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 21:54:06,176 - __main__ - INFO - ============================================================
+2025-10-13 21:54:06,176 - __main__ - INFO - Configuration Summary:
+2025-10-13 21:54:06,176 - __main__ - INFO -   api_configured: True
+2025-10-13 21:54:06,176 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 21:54:06,176 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 21:54:06,176 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 21:54:06,176 - __main__ - INFO -   max_query_time: 60
+2025-10-13 21:54:06,176 - __main__ - INFO -   server_port: 8000
+2025-10-13 21:54:06,176 - __main__ - INFO -   debug_mode: True
+2025-10-13 21:54:06,176 - __main__ - INFO -   log_level: INFO
+2025-10-13 21:54:06,180 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 21:54:06,180 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 21:54:06,181 - __main__ - INFO - 🚀 Starting Agentic RAG System in 'api' mode...
+2025-10-13 21:54:06,181 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 21:54:06,615 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 21:54:06,615 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 21:54:06,864 - core.embedding_manager_v2 - INFO - Loaded 1 cached embeddings
+2025-10-13 21:54:06,864 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 21:54:06,864 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 21:54:06,866 - core.faiss_index_manager - INFO - Loaded index with 0 vectors
+2025-10-13 21:54:06,866 - core.faiss_index_manager - INFO - FAISS Index Manager initialized (dimension: 1536)
+2025-10-13 21:54:06,867 - __main__ - INFO - ✓ FAISS Index Manager initialized
+2025-10-13 21:54:06,867 - core.cypher_traversal_engine - INFO - Cypher Traversal Engine initialized
+2025-10-13 21:54:06,867 - __main__ - INFO - ✓ Cypher Traversal Engine initialized
+2025-10-13 21:54:06,867 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 21:54:06,868 - __main__ - INFO - ✓ Query Analyzer initialized
+2025-10-13 21:54:06,868 - core.reasoning_engine_unified - INFO - Reasoning Engine initialized
+2025-10-13 21:54:06,868 - __main__ - INFO - ✓ Reasoning Engine initialized
+2025-10-13 21:54:06,868 - core.interactive_graph_editor - INFO - Graph Editor initialized
+2025-10-13 21:54:06,868 - core.interactive_graph_editor - INFO - Interactive Graph Editor initialized
+2025-10-13 21:54:06,868 - __main__ - INFO - ✓ Interactive Graph Editor initialized
+2025-10-13 21:54:06,868 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 21:54:06,873 - core.agentic_rag_api - INFO - Agentic RAG API initialized
+2025-10-13 21:54:06,873 - __main__ - INFO - ✓ Agentic RAG API initialized
+2025-10-13 21:54:06,873 - __main__ - INFO - 🎉 All 8 components initialized successfully!
+2025-10-13 21:54:06,873 - __main__ - INFO - 🔧 Testing component connections...
+2025-10-13 21:54:06,874 - core.embedding_manager_v2 - INFO - Generating embeddings for 1 texts
+2025-10-13 21:54:06,881 - __main__ - INFO - Connection test results:
+2025-10-13 21:54:06,883 - __main__ - INFO -   neo4j: ✅ Connected
+2025-10-13 21:54:06,883 - __main__ - INFO -   faiss: ✅ Ready (vectors: 0)
+2025-10-13 21:54:06,884 - __main__ - INFO -   embeddings: ✅ Connected (dimension: 1536)
+2025-10-13 21:54:06,884 - __main__ - INFO - ✅ All connection tests passed!
+2025-10-13 21:54:06,884 - __main__ - INFO - 🚀 Starting Agentic RAG API server...
+2025-10-13 21:54:06,885 - __main__ - INFO - ✓ API server started on http://localhost:8000
+2025-10-13 21:54:06,892 - __main__ - INFO - ✅ Agentic RAG System (API mode) started successfully!
+2025-10-13 22:44:23,188 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 22:44:23,192 - __main__ - INFO - ============================================================
+2025-10-13 22:44:23,209 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 22:44:23,209 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 22:44:23,209 - __main__ - INFO - ============================================================
+2025-10-13 22:44:23,209 - __main__ - INFO - Configuration Summary:
+2025-10-13 22:44:23,210 - __main__ - INFO -   api_configured: True
+2025-10-13 22:44:23,210 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 22:44:23,210 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 22:44:23,210 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 22:44:23,210 - __main__ - INFO -   max_query_time: 60
+2025-10-13 22:44:23,210 - __main__ - INFO -   server_port: 8000
+2025-10-13 22:44:23,210 - __main__ - INFO -   debug_mode: True
+2025-10-13 22:44:23,210 - __main__ - INFO -   log_level: INFO
+2025-10-13 22:44:23,219 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 22:44:23,219 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 22:44:23,231 - __main__ - INFO - 🚀 Starting Agentic RAG System in 'api' mode...
+2025-10-13 22:44:23,231 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 22:44:28,521 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 22:44:28,522 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 22:44:28,933 - core.embedding_manager_v2 - INFO - Loaded 1 cached embeddings
+2025-10-13 22:44:28,933 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 22:44:28,933 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 22:44:28,939 - core.faiss_index_manager - INFO - Loaded index with 0 vectors
+2025-10-13 22:44:28,940 - core.faiss_index_manager - INFO - FAISS Index Manager initialized (dimension: 1536)
+2025-10-13 22:44:28,940 - __main__ - INFO - ✓ FAISS Index Manager initialized
+2025-10-13 22:44:28,940 - core.cypher_traversal_engine - INFO - Cypher Traversal Engine initialized
+2025-10-13 22:44:28,940 - __main__ - INFO - ✓ Cypher Traversal Engine initialized
+2025-10-13 22:44:28,941 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 22:44:28,941 - __main__ - INFO - ✓ Query Analyzer initialized
+2025-10-13 22:44:28,941 - core.reasoning_engine_unified - INFO - Reasoning Engine initialized
+2025-10-13 22:44:28,941 - __main__ - INFO - ✓ Reasoning Engine initialized
+2025-10-13 22:44:28,941 - core.interactive_graph_editor - INFO - Graph Editor initialized
+2025-10-13 22:44:28,941 - core.interactive_graph_editor - INFO - Interactive Graph Editor initialized
+2025-10-13 22:44:28,942 - __main__ - INFO - ✓ Interactive Graph Editor initialized
+2025-10-13 22:44:28,942 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 22:44:28,948 - core.agentic_rag_api - INFO - Agentic RAG API initialized
+2025-10-13 22:44:28,948 - __main__ - INFO - ✓ Agentic RAG API initialized
+2025-10-13 22:44:28,948 - __main__ - INFO - 🎉 All 8 components initialized successfully!
+2025-10-13 22:44:28,948 - __main__ - INFO - 🔧 Testing component connections...
+2025-10-13 22:44:28,949 - core.embedding_manager_v2 - INFO - Generating embeddings for 1 texts
+2025-10-13 22:44:28,958 - __main__ - INFO - Connection test results:
+2025-10-13 22:44:28,958 - __main__ - INFO -   neo4j: ✅ Connected
+2025-10-13 22:44:28,959 - __main__ - INFO -   faiss: ✅ Ready (vectors: 0)
+2025-10-13 22:44:28,959 - __main__ - INFO -   embeddings: ✅ Connected (dimension: 1536)
+2025-10-13 22:44:28,959 - __main__ - INFO - ✅ All connection tests passed!
+2025-10-13 22:44:28,959 - __main__ - INFO - 🚀 Starting Agentic RAG API server...
+2025-10-13 22:44:28,960 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 22:44:28,964 - core.agentic_rag_api - INFO - Agentic RAG API initialized
+2025-10-13 22:44:28,966 - __main__ - INFO - ✓ API server started on http://localhost:8000
+2025-10-13 22:44:28,974 - __main__ - INFO - ✅ Agentic RAG System (API mode) started successfully!
+2025-10-13 22:54:56,542 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 22:54:56,543 - __main__ - INFO - ============================================================
+2025-10-13 22:54:56,543 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 22:54:56,543 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 22:54:56,543 - __main__ - INFO - ============================================================
+2025-10-13 22:54:56,543 - __main__ - INFO - Configuration Summary:
+2025-10-13 22:54:56,543 - __main__ - INFO -   api_configured: True
+2025-10-13 22:54:56,543 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 22:54:56,543 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 22:54:56,544 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 22:54:56,544 - __main__ - INFO -   max_query_time: 60
+2025-10-13 22:54:56,544 - __main__ - INFO -   server_port: 8000
+2025-10-13 22:54:56,544 - __main__ - INFO -   debug_mode: True
+2025-10-13 22:54:56,544 - __main__ - INFO -   log_level: INFO
+2025-10-13 22:54:56,550 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 22:54:56,550 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 22:54:56,551 - __main__ - INFO - 🚀 Starting Agentic RAG System in 'full' mode...
+2025-10-13 22:54:56,551 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 22:54:56,780 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 22:54:56,781 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 22:54:57,034 - core.embedding_manager_v2 - INFO - Loaded 1 cached embeddings
+2025-10-13 22:54:57,035 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 22:54:57,035 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 22:54:57,036 - core.faiss_index_manager - INFO - Loaded index with 0 vectors
+2025-10-13 22:54:57,037 - core.faiss_index_manager - INFO - FAISS Index Manager initialized (dimension: 1536)
+2025-10-13 22:54:57,037 - __main__ - INFO - ✓ FAISS Index Manager initialized
+2025-10-13 22:54:57,037 - core.cypher_traversal_engine - INFO - Cypher Traversal Engine initialized
+2025-10-13 22:54:57,037 - __main__ - INFO - ✓ Cypher Traversal Engine initialized
+2025-10-13 22:54:57,037 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 22:54:57,037 - __main__ - INFO - ✓ Query Analyzer initialized
+2025-10-13 22:54:57,038 - core.reasoning_engine_unified - INFO - Reasoning Engine initialized
+2025-10-13 22:54:57,038 - __main__ - INFO - ✓ Reasoning Engine initialized
+2025-10-13 22:54:57,038 - core.interactive_graph_editor - INFO - Graph Editor initialized
+2025-10-13 22:54:57,038 - core.interactive_graph_editor - INFO - Interactive Graph Editor initialized
+2025-10-13 22:54:57,038 - __main__ - INFO - ✓ Interactive Graph Editor initialized
+2025-10-13 22:54:57,038 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 22:54:57,044 - core.agentic_rag_api - INFO - Agentic RAG API initialized
+2025-10-13 22:54:57,045 - __main__ - INFO - ✓ Agentic RAG API initialized
+2025-10-13 22:54:57,045 - __main__ - INFO - 🎉 All 8 components initialized successfully!
+2025-10-13 22:54:57,045 - __main__ - INFO - 🔧 Testing component connections...
+2025-10-13 22:54:57,045 - core.embedding_manager_v2 - INFO - Generating embeddings for 1 texts
+2025-10-13 22:54:57,053 - __main__ - INFO - Connection test results:
+2025-10-13 22:54:57,054 - __main__ - INFO -   neo4j: ✅ Connected
+2025-10-13 22:54:57,054 - __main__ - INFO -   faiss: ✅ Ready (vectors: 0)
+2025-10-13 22:54:57,054 - __main__ - INFO -   embeddings: ✅ Connected (dimension: 1536)
+2025-10-13 22:54:57,055 - __main__ - INFO - ✅ All connection tests passed!
+2025-10-13 22:54:57,055 - __main__ - INFO - 🚀 Starting Agentic RAG API server...
+2025-10-13 22:54:57,055 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 22:54:57,058 - core.agentic_rag_api - INFO - Agentic RAG API initialized
+2025-10-13 22:54:57,059 - __main__ - INFO - ✓ API server started on http://localhost:8000
+2025-10-13 22:54:59,069 - __main__ - INFO - 🖥️  Starting Agentic RAG GUI...
+2025-10-13 22:54:59,306 - core.agentic_rag_gui - INFO - Agentic RAG GUI initialized
+2025-10-13 23:44:20,768 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 23:44:20,769 - __main__ - INFO - ============================================================
+2025-10-13 23:44:20,769 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-13 23:44:20,769 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-13 23:44:20,769 - __main__ - INFO - ============================================================
+2025-10-13 23:44:20,770 - __main__ - INFO - Configuration Summary:
+2025-10-13 23:44:20,770 - __main__ - INFO -   api_configured: True
+2025-10-13 23:44:20,770 - __main__ - INFO -   neo4j_configured: True
+2025-10-13 23:44:20,770 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-13 23:44:20,770 - __main__ - INFO -   reasoning_depth: 10
+2025-10-13 23:44:20,770 - __main__ - INFO -   max_query_time: 60
+2025-10-13 23:44:20,770 - __main__ - INFO -   server_port: 8000
+2025-10-13 23:44:20,770 - __main__ - INFO -   debug_mode: True
+2025-10-13 23:44:20,770 - __main__ - INFO -   log_level: INFO
+2025-10-13 23:44:20,777 - config - INFO - Logging setup complete (level: INFO)
+2025-10-13 23:44:20,778 - __main__ - INFO - Agentic System Manager initialized
+2025-10-13 23:44:20,778 - __main__ - INFO - 🚀 Starting Agentic RAG System in 'full' mode...
+2025-10-13 23:44:20,778 - __main__ - INFO - Initializing agentic system components...
+2025-10-13 23:44:21,392 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at bolt://localhost:7687
+2025-10-13 23:44:21,392 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-13 23:44:21,668 - core.embedding_manager_v2 - INFO - Loaded 1 cached embeddings
+2025-10-13 23:44:21,669 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-13 23:44:21,669 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-13 23:44:21,673 - core.faiss_index_manager - INFO - Loaded index with 0 vectors
+2025-10-13 23:44:21,673 - core.faiss_index_manager - INFO - FAISS Index Manager initialized (dimension: 1536)
+2025-10-13 23:44:21,673 - __main__ - INFO - ✓ FAISS Index Manager initialized
+2025-10-13 23:44:21,673 - core.cypher_traversal_engine - INFO - Cypher Traversal Engine initialized
+2025-10-13 23:44:21,674 - __main__ - INFO - ✓ Cypher Traversal Engine initialized
+2025-10-13 23:44:21,674 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 23:44:21,674 - __main__ - INFO - ✓ Query Analyzer initialized
+2025-10-13 23:44:21,674 - core.reasoning_engine_unified - INFO - Reasoning Engine initialized
+2025-10-13 23:44:21,674 - __main__ - INFO - ✓ Reasoning Engine initialized
+2025-10-13 23:44:21,675 - core.interactive_graph_editor - INFO - Graph Editor initialized
+2025-10-13 23:44:21,675 - core.interactive_graph_editor - INFO - Interactive Graph Editor initialized
+2025-10-13 23:44:21,675 - __main__ - INFO - ✓ Interactive Graph Editor initialized
+2025-10-13 23:44:21,675 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 23:44:21,680 - core.agentic_rag_api - INFO - Agentic RAG API initialized
+2025-10-13 23:44:21,680 - __main__ - INFO - ✓ Agentic RAG API initialized
+2025-10-13 23:44:21,680 - __main__ - INFO - 🎉 All 8 components initialized successfully!
+2025-10-13 23:44:21,680 - __main__ - INFO - 🔧 Testing component connections...
+2025-10-13 23:44:21,680 - core.embedding_manager_v2 - INFO - Generating embeddings for 1 texts
+2025-10-13 23:44:21,682 - __main__ - INFO - Connection test results:
+2025-10-13 23:44:21,682 - __main__ - INFO -   neo4j: ✅ Connected
+2025-10-13 23:44:21,682 - __main__ - INFO -   faiss: ✅ Ready (vectors: 0)
+2025-10-13 23:44:21,683 - __main__ - INFO -   embeddings: ✅ Connected (dimension: 1536)
+2025-10-13 23:44:21,683 - __main__ - INFO - ✅ All connection tests passed!
+2025-10-13 23:44:21,683 - __main__ - INFO - 🚀 Starting Agentic RAG API server...
+2025-10-13 23:44:21,683 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-13 23:44:21,687 - core.agentic_rag_api - INFO - Agentic RAG API initialized
+2025-10-13 23:44:21,687 - __main__ - INFO - ✓ API server started on http://localhost:8000
+2025-10-13 23:44:23,700 - __main__ - INFO - 🖥️  Starting Agentic RAG GUI...
+2025-10-13 23:44:23,984 - core.agentic_rag_gui - INFO - Agentic RAG GUI initialized
+2025-10-16 16:51:09,357 - config - INFO - Logging setup complete (level: INFO)
+2025-10-16 16:51:09,357 - __main__ - INFO - ============================================================
+2025-10-16 16:51:09,358 - __main__ - INFO - 🚀 AGENTIC GRAPH RAG SYSTEM
+2025-10-16 16:51:09,358 - __main__ - INFO -    Advanced Knowledge Assistant with Multi-Step Reasoning
+2025-10-16 16:51:09,358 - __main__ - INFO - ============================================================
+2025-10-16 16:51:09,358 - __main__ - INFO - Configuration Summary:
+2025-10-16 16:51:09,358 - __main__ - INFO -   api_configured: True
+2025-10-16 16:51:09,358 - __main__ - INFO -   neo4j_configured: True
+2025-10-16 16:51:09,358 - __main__ - INFO -   faiss_dimension: 1536
+2025-10-16 16:51:09,358 - __main__ - INFO -   reasoning_depth: 10
+2025-10-16 16:51:09,358 - __main__ - INFO -   max_query_time: 60
+2025-10-16 16:51:09,358 - __main__ - INFO -   server_port: 8000
+2025-10-16 16:51:09,358 - __main__ - INFO -   debug_mode: True
+2025-10-16 16:51:09,358 - __main__ - INFO -   log_level: INFO
+2025-10-16 16:51:09,361 - config - INFO - Logging setup complete (level: INFO)
+2025-10-16 16:51:09,361 - __main__ - INFO - Agentic System Manager initialized
+2025-10-16 16:51:09,362 - __main__ - INFO - 🚀 Starting Agentic RAG System in 'full' mode...
+2025-10-16 16:51:09,362 - __main__ - INFO - Initializing agentic system components...
+2025-10-16 16:51:09,518 - core.neo4j_graph_store_v2 - INFO - Connected to Neo4j at neo4j://localhost:7687
+2025-10-16 16:51:09,518 - __main__ - INFO - ✓ Neo4j Graph Store initialized
+2025-10-16 16:51:09,776 - core.embedding_manager_v2 - INFO - Loaded 1 cached embeddings
+2025-10-16 16:51:09,776 - core.embedding_manager_v2 - INFO - Embedding Manager initialized with model: text-embedding-3-small
+2025-10-16 16:51:09,776 - __main__ - INFO - ✓ Embedding Manager initialized
+2025-10-16 16:51:09,780 - core.faiss_index_manager - INFO - Loaded index with 0 vectors
+2025-10-16 16:51:09,780 - core.faiss_index_manager - INFO - FAISS Index Manager initialized (dimension: 1536)
+2025-10-16 16:51:09,780 - __main__ - INFO - ✓ FAISS Index Manager initialized
+2025-10-16 16:51:09,781 - core.cypher_traversal_engine - INFO - Cypher Traversal Engine initialized
+2025-10-16 16:51:09,781 - __main__ - INFO - ✓ Cypher Traversal Engine initialized
+2025-10-16 16:51:09,781 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-16 16:51:09,781 - __main__ - INFO - ✓ Query Analyzer initialized
+2025-10-16 16:51:09,781 - core.reasoning_engine_unified - INFO - Reasoning Engine initialized
+2025-10-16 16:51:09,781 - __main__ - INFO - ✓ Reasoning Engine initialized
+2025-10-16 16:51:09,782 - core.interactive_graph_editor - INFO - Graph Editor initialized
+2025-10-16 16:51:09,782 - core.interactive_graph_editor - INFO - Interactive Graph Editor initialized
+2025-10-16 16:51:09,782 - __main__ - INFO - ✓ Interactive Graph Editor initialized
+2025-10-16 16:51:09,782 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-16 16:51:09,789 - core.agentic_rag_api - INFO - Agentic RAG API initialized
+2025-10-16 16:51:09,789 - __main__ - INFO - ✓ Agentic RAG API initialized
+2025-10-16 16:51:09,789 - __main__ - INFO - 🎉 All 8 components initialized successfully!
+2025-10-16 16:51:09,789 - __main__ - INFO - 🔧 Testing component connections...
+2025-10-16 16:51:09,790 - core.embedding_manager_v2 - INFO - Generating embeddings for 1 texts
+2025-10-16 16:51:09,791 - __main__ - INFO - Connection test results:
+2025-10-16 16:51:09,791 - __main__ - INFO -   neo4j: ✅ Connected
+2025-10-16 16:51:09,792 - __main__ - INFO -   faiss: ✅ Ready (vectors: 0)
+2025-10-16 16:51:09,792 - __main__ - INFO -   embeddings: ✅ Connected (dimension: 1536)
+2025-10-16 16:51:09,792 - __main__ - INFO - ✅ All connection tests passed!
+2025-10-16 16:51:09,792 - __main__ - INFO - 🚀 Starting Agentic RAG API server...
+2025-10-16 16:51:09,793 - core.query_analyzer - INFO - Query Analyzer initialized
+2025-10-16 16:51:09,796 - core.agentic_rag_api - INFO - Agentic RAG API initialized
+2025-10-16 16:51:09,798 - __main__ - INFO - ✓ API server started on http://localhost:8000
+2025-10-16 16:51:11,804 - __main__ - INFO - 🖥️  Starting Agentic RAG GUI...
+2025-10-16 16:51:12,076 - core.agentic_rag_gui - INFO - Agentic RAG GUI initialized
+2025-10-16 16:52:44,374 - core.agentic_rag_gui - ERROR - System shutdown failed: invalid command name ".!panedwindow.!frame.!labelframe3.!frame.!button"
+2025-10-16 16:52:44,374 - __main__ - INFO - ✅ Agentic RAG System (Full mode) started successfully!
+2025-10-16 16:52:44,374 - __main__ - INFO - 🛑 Stopping Agentic RAG System...
+2025-10-16 16:52:44,374 - core.neo4j_graph_store_v2 - INFO - Neo4j connection closed
+2025-10-16 16:52:44,376 - __main__ - INFO - ✓ Graph store connection closed
+2025-10-16 16:52:44,381 - core.faiss_index_manager - INFO - Saved index with 0 vectors
+2025-10-16 16:52:44,381 - __main__ - INFO - ✓ FAISS index saved
+2025-10-16 16:52:44,381 - __main__ - INFO - ✅ Agentic RAG System stopped successfully
